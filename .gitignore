@@ -13,10 +13,12 @@ apps/android/.gradle/
 apps/android/.kotlin/
 apps/android/**/build/
 apps/android/local.properties
+keystore.properties
 *.apk
 *.aab
 *.jks
 *.keystore
+*.p12
 
 .library-cache.json
 __pycache__/
