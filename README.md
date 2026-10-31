@@ -37,10 +37,5 @@ cd apps/android
 
 APK 输出到 `apps/android/app/build/outputs/apk/debug/app-debug.apk`。正式下载包通过 GitHub Releases 发布，构建产物不进入 Git 历史。
 
-## 与 Moodify 的关系
 
-Sonviaf 是新的对外产品身份，不是 Moodify 下属子产品。Moodify 仓库作为历史与兼容来源保留；
-仍有效的 Core、契约和测试只允许按迁移清单逐项引入，禁止复制出第二套声音权威。
-
-Android 当前继续使用 `com.moodify.app` 作为升级兼容标识，以保留既有设备上的喜欢、收藏、歌单和播放历史；这不是对外产品名称。
 
