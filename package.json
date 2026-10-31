@@ -4,8 +4,9 @@
   "private": true,
   "description": "Sonviaf — AI music management software",
   "scripts": {
-    "dev": "python -m http.server 4174 --directory apps/web",
-    "check": "node --check apps/web/app.js"
+    "dev": "python apps/web/server.py --port 4173",
+    "check": "node --check apps/web/app.js",
+    "android:test": "cd apps/android && gradlew.bat testDebugUnitTest",
+    "android:build": "cd apps/android && gradlew.bat assembleDebug"
   }
 }
-

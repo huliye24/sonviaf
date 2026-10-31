@@ -1,8 +1,213 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sonviaf — AI 音乐管理软件。上传、分轨、演唱，让生成成为作品的开始。"><title>Sonviaf — AI 音乐管理软件</title><link rel="stylesheet" href="styles.css"></head><body>
-<nav><a class="logo" href="#top"><span class="mark">▥</span>sonviaf</a><div class="links"><a href="#flow">工作流</a><a href="#relation">作品关系</a><a href="#meaning">理念</a></div><button class="dark upload">上传音乐 <b>↗</b></button></nav>
-<main id="top">
-  <section class="hero"><div class="meta"><span>AI MUSIC, AFTER GENERATION</span><span>SONVIAF / 2026</span></div><div class="hero-grid"><div class="hero-copy"><p class="eyebrow">AI 音乐管理软件</p><h1>生成之后，<br><em>作品才开始。</em></h1><p class="deck">把散落的 AI 音乐收进作品库，打开为可理解的声音层，再把伴奏交给真实的人声。Sonviaf 管理的不是文件，而是一首歌不断被演唱、被修订、被听见的生命线。</p><div class="actions"><button class="lime upload">上传一首 AI 音乐 <b>＋</b></button><a href="#meaning">为什么是 Sonviaf ↓</a></div></div><div class="disc-wrap"><span class="orb o1">WORK</span><span class="orb o2">STEMS</span><span class="orb o3">VOICE</span><div class="disc"><div class="label"><small>SONVIAF</small><b>S / 01</b><i>Generated music<br>becomes a work.</i></div></div><div class="signal">▮▯▮▯▮▯▮</div></div></div><div class="footmeta"><span>UPLOAD</span><span>SEPARATE</span><span>SING</span><span>KEEP THE ORIGIN</span></div></section>
-  <section class="flow" id="flow"><div class="intro"><p class="eyebrow">ONE WORK · MANY PERFORMANCES</p><h2>不是再生成一次，<br>是继续完成这首歌。</h2><p>AI 让音乐数量爆发，Sonviaf 让每一首音乐获得清晰来源、可拆解结构和继续演唱的路径。</p></div><div class="bench"><div class="tabs"><button data-stage="source" class="active"><span>01</span><b>收进作品</b><small>UPLOAD</small></button><button data-stage="stems"><span>02</span><b>打开声音</b><small>SEPARATE</small></button><button data-stage="voice"><span>03</span><b>让人演唱</b><small>SING</small></button></div><div class="bench-body"><aside><span id="state">LOCAL SOURCE</span><p>WORK / SVF–0001</p><h3 id="title">我曾遥望银河星光</h3><dl><div><dt>来源</dt><dd>用户上传</dd></div><div><dt>原作</dt><dd>始终保留</dd></div><div><dt>同步</dt><dd>Pending</dd></div></dl></aside><div class="demo" id="demo"></div></div><div class="bench-foot"><p id="notice">当前为 Sonviaf 产品交互样机。真实能力以运行时回执为准。</p><button id="next">查看分轨 →</button></div></div><input id="file" type="file" accept="audio/*" hidden></section>
-  <section class="relation" id="relation"><div><p class="eyebrow">THE NEW MUSIC RELATION</p><h2>一首作品，<br>不再只有一个终点。</h2><p>过去，文件交付意味着结束。AI 音乐时代，生成只是源头。分轨让作品可以被理解，演唱让它进入人的身体，版本关系让每次改变都能回到出处。</p></div><div class="map"><article class="work"><small>ORIGINAL</small><b>WORK</b><span>音乐 · 伴奏 · 歌词 · 权利来源</span></article><i></i><article class="p1"><small>PERFORMANCE 01</small><b>你的演唱</b><span>Take 01 · Take 02 · Take 03</span></article><article class="p2"><small>PERFORMANCE 02</small><b>另一种声音</b><span>关联原作，不复制所有权</span></article></div></section>
-  <section class="meaning" id="meaning"><div><p class="eyebrow">SON · VIA · F</p><h2><span>SON</span>IC SOUND<br><span>VIA</span> A HUMAN PATH<br><span>F</span>ORWARD</h2></div><div><p>Sonviaf 不是一个“AI 再生成器”。它代表声音从生成结果，经由人的选择、分解、演唱与验证，继续向前。</p><blockquote>AI 让音乐变多。<br>人让作品发生关系。</blockquote><p>它承载一种新的用户习惯：先收藏源作品，再打开结构；先保留原始版本，再创造自己的 Performance；发布不是覆盖，而是增加一条可追溯的新关系。</p></div></section>
-</main><footer><a class="logo" href="#top"><span class="mark">▥</span>sonviaf</a><p>AI MUSIC MANAGEMENT SOFTWARE<br>GENERATED IS THE BEGINNING.</p><span>CONCEPT / 2026</span></footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sonviaf — AI 音乐管理软件。">
+<meta name="color-scheme" content="light">
+<title>Sonviaf — 作品库</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="m15.2 15.2 4.8 4.8"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V5"/><path d="m7.5 9.5 4.5-4.5 4.5 4.5"/><path d="M5 16v3h14v-3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 20h14"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4 4 8.5 12 13l8-4.5L12 4Z"/><path d="m4 15 8 4.5 8-4.5"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h14M4 12h18M4 17h10"/><circle cx="20" cy="7" r="1.8"/><circle cx="16" cy="12" r="1.8"/><circle cx="16" cy="17" r="1.8"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0"/><path d="M12 17v4M9 21h6"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></g></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M9 17V6l10-2v11"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="15.5" r="2.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m14.5 5-7 7 7 7"/></symbol>
+  <symbol id="i-eq" viewBox="0 0 24 24"><path d="M6 4v16M12 4v16M18 4v16"/><circle cx="6" cy="9" r="1.8"/><circle cx="12" cy="15" r="1.8"/><circle cx="18" cy="7" r="1.8"/></symbol>
+  <symbol id="i-dynamics" viewBox="0 0 24 24"><path d="M3 12h5M16 12h5"/><path d="m9 9 3 3-3 3M15 9l-3 3 3 3"/></symbol>
+  <symbol id="i-loudness" viewBox="0 0 24 24"><path d="M4 10v4h3l4 3V7l-4 3H4Z"/><path d="M15 9.5a4 4 0 0 1 0 5"/><path d="M18 7a8 8 0 0 1 0 10"/></symbol>
+  <symbol id="i-tune" viewBox="0 0 24 24"><path d="M8 19V7M8 7 5 10M8 7l3 3"/><path d="M16 5v12M16 17l-3-3M16 17l3-3"/></symbol>
+  <symbol id="i-repair" viewBox="0 0 24 24"><path d="M14.5 5.5a4.5 4.5 0 0 0-5.8 5.8L4 16v3h3l4.7-4.7a4.5 4.5 0 0 0 5.8-5.8l-2.6 2.6-2.2-2.2 2.8-2.4Z"/></symbol>
+  <symbol id="i-denoise" viewBox="0 0 24 24"><path d="M3 12h3l2-5 3 10 2-7 2 4h6"/></symbol>
+  <symbol id="i-limiter" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12c2 0 2-5 4-5s2 10 4 10 2-10 4-10 2 5 4 5"/></symbol>
+  <symbol id="i-width" viewBox="0 0 24 24"><path d="M12 4v16M4 12h4M8 8l-4 4 4 4M20 12h-4M16 8l4 4-4 4"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M4 9.3h16M4 14.7h16M9.3 4v16M14.7 4v16"/></symbol>
+  <symbol id="i-velocity" viewBox="0 0 24 24"><path d="M5 19V9M10 19V5M15 19v-7M20 19v-4"/></symbol>
+  <symbol id="i-page" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"/><path d="M15 3v5h4"/></symbol>
+  <symbol id="i-sharp" viewBox="0 0 24 24"><path d="M10 4 8 20M16 4l-2 16M5 9h15M4 15h15"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13L18.5 12 8 5.5Z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5.5h2.5v13H9zM14.5 5.5H17v13h-2.5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5 9.5 17 19 7.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 21 20H3L12 4Z"/><path d="M12 10v4M12 17h.01"/></symbol>
+</svg>
+
+<div class="app" id="top">
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Sonviaf">
+      <img class="brand-logo" src="assets/sonviaf-logo-ink.png" alt="sonviaf" width="512" height="160">
+    </a>
+    <div class="topbar-actions">
+      <button class="import-btn" id="uploadBtn" type="button">
+        <svg class="icon"><use href="#i-upload"></use></svg><span>导入</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="stage">
+
+    <aside class="library" aria-label="作品库">
+      <div class="lib-search">
+        <label class="search">
+          <svg class="icon"><use href="#i-search"></use></svg>
+          <input id="search" type="search" placeholder="搜索" aria-label="搜索作品" autocomplete="off">
+        </label>
+        <button class="icon-btn plain lib-toggle" id="libToggle" type="button" aria-label="收起作品库" title="收起作品库">
+          <svg class="icon"><use href="#i-chevron"></use></svg>
+        </button>
+      </div>
+      <ul class="works" id="workList" aria-live="polite"></ul>
+    </aside>
+
+    <main class="bench" aria-label="作品">
+      <div class="bench-head">
+        <div class="title-block">
+          <h1 class="work-title" id="workTitle">读取曲库…</h1>
+        </div>
+        <div class="viewtabs" id="viewTabs" role="tablist" aria-label="视图">
+          <button class="viewtab on" type="button" data-view="wave" role="tab" aria-selected="true">波形</button>
+          <button class="viewtab" type="button" data-view="midi" role="tab" aria-selected="false">MIDI</button>
+          <button class="viewtab" type="button" data-view="score" role="tab" aria-selected="false">曲谱</button>
+        </div>
+        <div class="menu-wrap">
+          <button class="icon-btn plain" id="moreBtn" type="button" aria-label="更多" title="更多">
+            <svg class="icon"><use href="#i-more"></use></svg>
+          </button>
+          <div class="menu" id="moreMenu" hidden>
+            <button type="button" data-menu="rename">改名</button>
+            <button type="button" data-menu="info">查看来源</button>
+            <button type="button" data-menu="export">导出原作</button>
+            <button type="button" data-menu="remove">从库中移除</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="rail" aria-label="操作">
+        <div class="rail-tools">
+          <button class="action primary" id="separateBtn" type="button" data-action="separate" aria-label="分轨" title="分轨">
+            <svg class="icon"><use href="#i-layers"></use></svg>
+          </button>
+          <button class="action" id="backingBtn" type="button" data-action="backing" aria-label="制作伴奏" title="制作伴奏">
+            <svg class="icon"><use href="#i-sliders"></use></svg>
+          </button>
+          <button class="action" id="singBtn" type="button" data-action="sing" aria-label="演唱" title="演唱">
+            <svg class="icon"><use href="#i-mic"></use></svg>
+          </button>
+          <button class="action" id="exportBtn" type="button" data-action="export" aria-label="导出" title="导出">
+            <svg class="icon"><use href="#i-download"></use></svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="wave-area" id="waveArea" aria-live="polite"></div>
+      <div class="roll" id="midiView" hidden></div>
+      <div class="score" id="scoreView" hidden></div>
+
+      <div class="transport">
+        <button class="play" id="playBtn" type="button" aria-label="播放原作" title="播放">
+          <svg class="icon solid"><use href="#i-play"></use></svg>
+        </button>
+        <div class="ab" id="ab" aria-label="版本对比">
+          <button type="button" data-ab="original" class="on">原作</button>
+          <button type="button" data-ab="processed" disabled>处理后</button>
+        </div>
+        <span class="mono time" id="timeNow">00:00</span>
+        <div class="timeline" id="timeline" role="progressbar" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress" id="progress"></div>
+        </div>
+        <span class="mono time muted" id="timeAll">00:00</span>
+      </div>
+
+      <div class="chain" aria-label="处理链">
+        <span class="chain-label">处理链</span>
+        <div class="chain-list" id="chainList"></div>
+        <span class="chain-flag" id="chainFlag" hidden>未渲染</span>
+      </div>
+
+      <div class="dock" aria-label="处理工具">
+        <div class="dock-tools" id="dockTools"></div>
+      </div>
+
+      <p class="status" id="statusLine" hidden></p>
+    </main>
+
+  </div>
+
+</div>
+
+<aside class="details" id="details" hidden>
+  <div class="details-head">
+    <span>来源信息</span>
+    <button class="icon-btn plain" id="closeDetails" type="button" aria-label="关闭">
+      <svg class="icon"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+  <dl class="details-list" id="detailsList"></dl>
+</aside>
+
+<div class="modal" id="sepModal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="sepTitle">
+    <h2 id="sepTitle">分轨</h2>
+    <p class="modal-note">原始音频不会被覆盖。</p>
+    <label class="choice"><input type="radio" name="sepMode" value="vocals" checked><span>人声 + 伴奏</span></label>
+    <label class="choice"><input type="radio" name="sepMode" value="four"><span>人声 / 鼓 / 贝斯 / 其他</span></label>
+    <div class="modal-actions">
+      <button class="btn primary" id="sepStart" type="button">开始分轨</button>
+      <button class="btn ghost" id="sepCancel" type="button">取消</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="singModal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="singTitle">
+    <h2 id="singTitle">演唱</h2>
+    <p class="modal-note">还没有伴奏，请先选择一条路径。</p>
+    <div class="modal-actions">
+      <button class="btn primary" id="singBacking" type="button">先制作伴奏</button>
+      <button class="btn ghost" id="singExternal" type="button">使用外部伴奏</button>
+    </div>
+  </div>
+</div>
+
+<aside class="proc" id="procPanel" hidden>
+  <div class="proc-head">
+    <span class="proc-title"><svg class="icon"><use id="procIcon" href="#i-eq"></use></svg><b id="procName">均衡 EQ</b></span>
+    <button class="icon-btn plain" id="procClose" type="button" aria-label="关闭">
+      <svg class="icon"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+  <div class="proc-body">
+    <div class="proc-tags"><span class="chip">Preview</span><label class="bypass"><input type="checkbox" id="procBypass"> 旁通</label></div>
+    <div id="procParams"></div>
+    <div class="proc-sub">测量</div>
+    <div class="proc-meters">
+      <div class="meter"><span>处理前 LUFS</span><b>—</b></div>
+      <div class="meter"><span>处理后 LUFS</span><b>—</b></div>
+      <div class="meter"><span>真峰 dBTP</span><b>—</b></div>
+    </div>
+    <p class="proc-hint">测量与处理待接入 Core</p>
+    <div class="proc-sub">版本</div>
+    <div class="proc-versions" id="procVersions"></div>
+  </div>
+  <div class="proc-foot">
+    <button class="btn primary" id="procApply" type="button">加入处理链</button>
+    <button class="btn ghost" id="procRemove" type="button" hidden>移除</button>
+  </div>
+</aside>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<audio id="audio" preload="metadata"></audio>
+<input id="file" type="file" accept="audio/*" hidden>
+<script src="assets/case/lead-notes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

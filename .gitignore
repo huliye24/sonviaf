@@ -8,3 +8,15 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Android local/build outputs
+apps/android/.gradle/
+apps/android/.kotlin/
+apps/android/**/build/
+apps/android/local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+
+.library-cache.json
+__pycache__/
